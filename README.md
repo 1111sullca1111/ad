@@ -1,1 +1,821 @@
-# ad
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día de la Madre</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff9f9;
+            overflow-x: hidden;
+        }
+        
+        .dancing-font {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .heart {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            background-color: #ff6b81;
+            transform: rotate(45deg);
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        .heart:before, .heart:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #ff6b81;
+            border-radius: 50%;
+        }
+        
+        .heart:before {
+            top: -30px;
+            left: 0;
+        }
+        
+        .heart:after {
+            top: 0;
+            left: -30px;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: rotate(45deg) scale(1); }
+            25% { transform: rotate(45deg) scale(1.1); }
+            50% { transform: rotate(45deg) scale(1); }
+            75% { transform: rotate(45deg) scale(1.2); }
+            100% { transform: rotate(45deg) scale(1); }
+        }
+        
+        .flower {
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+        
+        .flower-center {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #FFD700;
+            border-radius: 50%;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+        }
+        
+        .flower-petal {
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background-color: #FF69B4;
+            border-radius: 50% 50% 0 0;
+            transform-origin: bottom center;
+        }
+        
+        .photo-frame {
+            border: 15px solid #f8e1e4;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: rotate(-5deg);
+            transition: all 0.3s ease;
+        }
+        
+        .photo-frame:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .message-box {
+            background: linear-gradient(135deg, #fff9f9 0%, #ffecef 100%);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid #ff6b81;
+        }
+        
+        .gift-box {
+            perspective: 1000px;
+        }
+        
+        .gift-lid {
+            transform-origin: bottom;
+            transition: all 0.5s ease;
+        }
+        
+        .gift-box:hover .gift-lid {
+            transform: rotateX(30deg);
+        }
+        
+        .polaroid {
+            background: white;
+            padding: 15px 15px 40px 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+        }
+        
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+        
+        .polaroid-caption {
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            margin-top: 10px;
+            color: #666;
+        }
+        
+        .memory-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .memory-card:hover {
+            transform: translateY(-10px) rotateY(10deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .music-note {
+            position: absolute;
+            opacity: 0.6;
+            animation: floatNote 5s linear infinite;
+        }
+        
+        @keyframes floatNote {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            animation: confettiFall 5s linear forwards;
+        }
+        
+        @keyframes confettiFall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 1; }
+        }
+        
+        .rose-petal {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23ff6b81" d="M50,10 C60,20 70,25 80,30 C90,35 95,40 95,50 C95,60 90,65 80,70 C70,75 60,80 50,90 C40,80 30,75 20,70 C10,65 5,60 5,50 C5,40 10,35 20,30 C30,25 40,20 50,10 Z"/></svg>');
+            background-size: contain;
+            opacity: 0;
+            animation: petalFall 8s linear forwards;
+        }
+        
+        @keyframes petalFall {
+            0% { transform: translateY(-100px) rotate(0deg) scale(0.5); opacity: 0; left: calc(50% - 10px); }
+            10% { opacity: 0.8; }
+            100% { transform: translateY(100vh) rotate(360deg) scale(1); opacity: 0.8; left: calc(50% + 200px); }
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #ff6b81;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 2px;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #ff6b81; }
+        }
+        
+        .candle {
+            width: 30px;
+            height: 60px;
+            background: linear-gradient(to bottom, #fff 0%, #f8f8f8 50%, #eee 100%);
+            border-radius: 3px;
+            position: relative;
+            box-shadow: 0 0 10px rgba(255,200,0,0.5);
+        }
+        
+        .candle:after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            width: 10px;
+            height: 20px;
+            background: linear-gradient(to bottom, #ff9d00 0%, #ffd000 50%, #ff9d00 100%);
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 10px rgba(255,200,0,0.8);
+            animation: flame 1s ease-in-out infinite alternate;
+        }
+        
+        @keyframes flame {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(2deg); }
+            100% { transform: scale(1.2) rotate(-2deg); }
+        }
+        
+        .cake-layer {
+            height: 30px;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .cake-layer:after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+            border-radius: 5px;
+        }
+        
+        .cake-top {
+            height: 20px;
+            border-radius: 50% 50% 0 0;
+        }
+
+        /* Estilos para el reproductor de música */
+        .music-player {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 300px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .progress-container {
+            background: #f1f1f1;
+            border-radius: 5px;
+            height: 6px;
+            width: 100%;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .progress {
+            background: #ff6b81;
+            border-radius: 5px;
+            height: 100%;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .time-container {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .control-btn {
+            background: #ff6b81;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .control-btn:hover {
+            transform: scale(1.1);
+            background: #ff4757;
+        }
+
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+
+        .song-info {
+            margin-bottom: 10px;
+        }
+
+        .song-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .song-artist {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+        <!-- Floating elements background -->
+        <div class="heart absolute top-10 left-10 opacity-20"></div>
+        <div class="heart absolute top-1/4 right-20 opacity-20 animation-delay-500"></div>
+        <div class="heart absolute bottom-20 left-1/3 opacity-20 animation-delay-1000"></div>
+        <div class="heart absolute bottom-1/4 right-1/4 opacity-20 animation-delay-1500"></div>
+        
+        <!-- Music notes -->
+        <div class="music-note" style="left: 10%; animation-delay: 1s;"><i class="fas fa-music text-pink-300 text-xl"></i></div>
+        <div class="music-note" style="left: 30%; animation-delay: 3s;"><i class="fas fa-music text-rose-300 text-xl"></i></div>
+        <div class="music-note" style="left: 70%; animation-delay: 2s;"><i class="fas fa-music text-pink-400 text-xl"></i></div>
+        <div class="music-note" style="left: 90%; animation-delay: 4s;"><i class="fas fa-music text-rose-400 text-xl"></i></div>
+        
+        <!-- Rose petals -->
+        <div class="rose-petal" style="animation-delay: 0.5s;"></div>
+        <div class="rose-petal" style="animation-delay: 2s;"></div>
+        <div class="rose-petal" style="animation-delay: 3.5s;"></div>
+        <div class="rose-petal" style="animation-delay: 5s;"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-4xl bg-white rounded-3xl shadow-xl overflow-hidden">
+        <!-- Header with flowers -->
+        <div class="bg-gradient-to-r from-pink-100 to-rose-100 p-6 text-center relative overflow-hidden">
+            <div class="absolute top-2 left-4">
+                <div class="flower">
+                    <div class="flower-center"></div>
+                    <div class="flower-petal" style="transform: rotate(0deg) translateY(-10px);"></div>
+                    <div class="flower-petal" style="transform: rotate(45deg) translateY(-10px);"></div>
+                    <div class="flower-petal" style="transform: rotate(90deg) translateY(-10px);"></div>
+                    <div class="flower-petal" style="transform: rotate(135deg) translateY(-10px);"></div>
+                </div>
+            </div>
+            <div class="absolute top-2 right-4">
+                <div class="flower">
+                    <div class="flower-center"></div>
+                    <div class="flower-petal" style="transform: rotate(0deg) translateY(-10px);"></div>
+                    <div class="flower-petal" style="transform: rotate(45deg) translateY(-10px);"></div>
+                    <div class="flower-petal" style="transform: rotate(90deg) translateY(-10px);"></div>
+                    <div class="flower-petal" style="transform: rotate(135deg) translateY(-10px);"></div>
+                </div>
+            </div>
+            <h1 class="dancing-font text-5xl md:text-6xl font-bold text-rose-600 mb-2">Feliz Día de la Madre</h1>
+            <p class="text-rose-500 text-lg">Para la mejor mamá del mundo</p>
+            
+            <!-- Candle cake -->
+            <div class="mt-6 flex justify-center items-end">
+                <div class="mr-4">
+                    <div class="cake-layer bg-pink-200 w-32"></div>
+                    <div class="cake-layer bg-pink-300 w-40"></div>
+                    <div class="cake-top bg-pink-400 w-48"></div>
+                </div>
+                <div class="candle"></div>
+            </div>
+        </div>
+        
+        <div class="p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Photo section -->
+            <div class="flex flex-col items-center justify-center">
+                <div class="photo-frame floating mb-6">
+                    <img src="https://images.unsplash.com/photo-1607748859297-3bc329859e3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                         alt="Madre e hijo" class="w-64 h-64 object-cover">
+                </div>
+                
+                <!-- Polaroid memories -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="polaroid">
+                        <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             alt="Recuerdo" class="w-full h-32 object-cover">
+                        <p class="polaroid-caption">Nuestro viaje</p>
+                    </div>
+                    <div class="polaroid">
+                        <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             alt="Recuerdo" class="w-full h-32 object-cover">
+                        <p class="polaroid-caption">Tus enseñanzas</p>
+                    </div>
+                </div>
+                
+                <button onclick="showLove()" class="bg-rose-500 hover:bg-rose-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all transform hover:scale-105 flex items-center">
+                    <i class="fas fa-heart mr-2"></i> Presiona para enviar amor
+                </button>
+            </div>
+            
+            <!-- Message section -->
+            <div class="flex flex-col justify-center">
+                <div class="message-box p-6 rounded-lg mb-6">
+                    <p class="text-gray-700 mb-4">Querida mamá,</p>
+                    <p class="text-gray-700 mb-4">En este día tan especial quiero recordarte lo importante que eres para mí. Eres mi guía, mi apoyo y mi mayor inspiración.</p>
+                    <p class="text-gray-700">Gracias por tu amor incondicional, por tus sacrificios y por estar siempre a mi lado. ¡Te amo con todo mi corazón!</p>
+                </div>
+                
+                <!-- Interactive gift box -->
+                <div class="gift-box mt-4 cursor-pointer" onclick="openGift()">
+                    <div class="relative w-24 h-24 mx-auto">
+                        <div class="gift-lid absolute w-full h-8 bg-rose-400 rounded-t-lg top-0 left-0 z-10"></div>
+                        <div class="absolute w-full h-16 bg-rose-500 rounded-b-lg top-8 left-0">
+                            <div class="absolute w-full h-4 bg-rose-600 top-1/2 left-0 transform -translate-y-1/2"></div>
+                            <div class="absolute w-4 h-full bg-rose-600 left-1/2 transform -translate-x-1/2"></div>
+                        </div>
+                    </div>
+                    <p class="text-center text-gray-600 mt-2">Abre tu regalo</p>
+                </div>
+                
+                <!-- Memory cards -->
+                <div class="mt-8 grid grid-cols-2 gap-4">
+                    <div class="memory-card bg-pink-50 p-4 rounded-lg shadow-md cursor-pointer" onclick="showMemory(1)">
+                        <i class="fas fa-utensils text-rose-500 text-xl mb-2"></i>
+                        <p class="text-sm text-gray-700">Tus deliciosas comidas</p>
+                    </div>
+                    <div class="memory-card bg-pink-50 p-4 rounded-lg shadow-md cursor-pointer" onclick="showMemory(2)">
+                        <i class="fas fa-hands-helping text-rose-500 text-xl mb-2"></i>
+                        <p class="text-sm text-gray-700">Tu apoyo incondicional</p>
+                    </div>
+                    <div class="memory-card bg-pink-50 p-4 rounded-lg shadow-md cursor-pointer" onclick="showMemory(3)">
+                        <i class="fas fa-book text-rose-500 text-xl mb-2"></i>
+                        <p class="text-sm text-gray-700">Tus sabios consejos</p>
+                    </div>
+                    <div class="memory-card bg-pink-50 p-4 rounded-lg shadow-md cursor-pointer" onclick="showMemory(4)">
+                        <i class="fas fa-laugh-beam text-rose-500 text-xl mb-2"></i>
+                        <p class="text-sm text-gray-700">Tus risas contagiosas</p>
+                    </div>
+                </div>
+
+                <!-- Music player -->
+                <div class="music-player mt-8">
+                    <div class="song-info">
+                        <div class="song-title">A Thousand Years</div>
+                        <div class="song-artist">Christina Perri</div>
+                    </div>
+                    <div class="progress-container" id="progress-container">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <div class="time-container">
+                        <span id="current-time">0:00</span>
+                        <span id="duration">3:42</span>
+                    </div>
+                    <div class="controls">
+                        <button class="control-btn" onclick="skipBackward()">
+                            <i class="fas fa-backward"></i>
+                        </button>
+                        <button class="control-btn play-btn" onclick="togglePlay()" id="play-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button class="control-btn" onclick="skipForward()">
+                            <i class="fas fa-forward"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Flower separator -->
+        <div class="relative h-16 bg-gradient-to-r from-pink-50 to-rose-50 overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex space-x-4">
+                <i class="fas fa-spa text-rose-300 text-2xl"></i>
+                <i class="fas fa-spa text-rose-400 text-2xl"></i>
+                <i class="fas fa-spa text-rose-500 text-2xl"></i>
+                <i class="fas fa-spa text-rose-400 text-2xl"></i>
+                <i class="fas fa-spa text-rose-300 text-2xl"></i>
+            </div>
+        </div>
+        
+        <!-- Reasons why I love you -->
+        <div class="p-8 bg-white">
+            <h2 class="dancing-font text-3xl text-center text-rose-600 mb-6">10 Razones por las que te amo</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex items-start">
+                    <i class="fas fa-heart text-rose-400 mt-1 mr-3"></i>
+                    <p class="text-gray-700">Por tu amor incondicional</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-heart text-rose-400 mt-1 mr-3"></i>
+                    <p class="text-gray-700">Por tus sabios consejos</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-heart text-rose-400 mt-1 mr-3"></i>
+                    <p class="text-gray-700">Por tu sonrisa que ilumina mi día</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-heart text-rose-400 mt-1 mr-3"></i>
+                    <p class="text-gray-700">Por tu fortaleza ante las adversidades</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-heart text-rose-400 mt-1 mr-3"></i>
+                    <p class="text-gray-700">Por tus deliciosas comidas</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-heart text-rose-400 mt-1 mr-3"></i>
+                    <p class="text-gray-700">Por tus abrazos reconfortantes</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-heart text-rose-400 mt-1 mr-3"></i>
+                    <p class="text-gray-700">Por enseñarme los valores importantes</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-heart text-rose-400 mt-1 mr-3"></i>
+                    <p class="text-gray-700">Por creer en mí cuando nadie más lo hacía</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-heart text-rose-400 mt-1 mr-3"></i>
+                    <p class="text-gray-700">Por tu paciencia infinita</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-heart text-rose-400 mt-1 mr-3"></i>
+                    <p class="text-gray-700">Por ser simplemente tú</p>
+                </div>
+            </div>
+            
+            <!-- Typewriter effect -->
+            <div class="mt-8 text-center">
+                <h3 class="typewriter dancing-font text-2xl text-rose-600">Eres la mejor mamá del mundo</h3>
+            </div>
+        </div>
+        
+        <!-- Footer with signature -->
+        <div class="bg-rose-50 p-6 text-center">
+            <p class="text-gray-600 mb-2">Con todo mi cariño,</p>
+            <p class="dancing-font text-2xl text-rose-600">Tu hijo/hija</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <i class="fas fa-heart text-rose-400"></i>
+                <i class="fas fa-heart text-rose-500"></i>
+                <i class="fas fa-heart text-rose-600"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Floating hearts effect -->
+    <div id="hearts-container" class="fixed top-0 left-0 w-full h-full pointer-events-none z-20"></div>
+    
+    <!-- Confetti container -->
+    <div id="confetti-container" class="fixed top-0 left-0 w-full h-full pointer-events-none z-30"></div>
+    
+    <!-- Audio element -->
+    <audio id="song" src="https://youtu.be/EpK7PalMhGw?si=1EBYvdOo7DVVUxiE"></audio>
+    
+    <script>
+        // Configurar la canción "A Thousand Years"
+        const song = new Audio('https://youtu.be/EpK7PalMhGw?si=1EBYvdOo7DVVUxiE');
+        const playBtn = document.getElementById('play-btn');
+        const progress = document.getElementById('progress');
+        const progressContainer = document.getElementById('progress-container');
+        const currentTimeEl = document.getElementById('current-time');
+        const durationEl = document.getElementById('duration');
+
+        // Actualizar la barra de progreso
+        function updateProgress(e) {
+            const { duration, currentTime } = e.srcElement;
+            const progressPercent = (currentTime / duration) * 100;
+            progress.style.width = `${progressPercent}%`;
+            
+            // Actualizar el tiempo actual
+            const currentMinutes = Math.floor(currentTime / 60);
+            let currentSeconds = Math.floor(currentTime % 60);
+            if (currentSeconds < 10) {
+                currentSeconds = `0${currentSeconds}`;
+            }
+            currentTimeEl.innerHTML = `${currentMinutes}:${currentSeconds}`;
+        }
+
+        // Establecer el tiempo de la canción al hacer clic en la barra de progreso
+        function setProgress(e) {
+            const width = this.clientWidth;
+            const clickX = e.offsetX;
+            const duration = song.duration;
+            song.currentTime = (clickX / width) * duration;
+        }
+
+        // Reproducir o pausar la canción
+        function togglePlay() {
+            if (song.paused) {
+                song.play();
+                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                createMusicNotes();
+            } else {
+                song.pause();
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        }
+
+        // Saltar hacia adelante 10 segundos
+        function skipForward() {
+            song.currentTime += 10;
+        }
+
+        // Saltar hacia atrás 10 segundos
+        function skipBackward() {
+            song.currentTime -= 10;
+        }
+
+        // Cuando la canción está cargada
+        song.addEventListener('loadedmetadata', () => {
+            const durationMinutes = Math.floor(song.duration / 60);
+            let durationSeconds = Math.floor(song.duration % 60);
+            if (durationSeconds < 10) {
+                durationSeconds = `0${durationSeconds}`;
+            }
+            durationEl.innerHTML = `${durationMinutes}:${durationSeconds}`;
+        });
+
+        // Event listeners
+        song.addEventListener('timeupdate', updateProgress);
+        progressContainer.addEventListener('click', setProgress);
+        song.addEventListener('ended', () => {
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            progress.style.width = '0%';
+            currentTimeEl.innerHTML = '0:00';
+        });
+
+        function showLove() {
+            const container = document.getElementById('hearts-container');
+            
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart absolute opacity-70';
+                
+                // Random position
+                const xPos = Math.random() * window.innerWidth;
+                const yPos = Math.random() * window.innerHeight;
+                const size = Math.random() * 30 + 20;
+                const color = `hsl(${Math.random() * 30 + 330}, 100%, 70%)`;
+                
+                heart.style.left = `${xPos}px`;
+                heart.style.top = `${yPos}px`;
+                heart.style.width = `${size}px`;
+                heart.style.height = `${size}px`;
+                heart.style.backgroundColor = color;
+                
+                // Set pseudo-elements for heart shape
+                heart.innerHTML = `
+                    <style>
+                        #heart-${i}:before, #heart-${i}:after {
+                            content: '';
+                            position: absolute;
+                            width: ${size}px;
+                            height: ${size}px;
+                            background-color: ${color};
+                            border-radius: 50%;
+                        }
+                        #heart-${i}:before {
+                            top: -${size/2}px;
+                            left: 0;
+                        }
+                        #heart-${i}:after {
+                            top: 0;
+                            left: -${size/2}px;
+                        }
+                    </style>
+                `;
+                heart.id = `heart-${i}`;
+                
+                container.appendChild(heart);
+                
+                // Remove heart after animation
+                setTimeout(() => {
+                    heart.remove();
+                }, 1500);
+            }
+            
+            // Play sound
+            const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3');
+            audio.play();
+        }
+        
+        function openGift() {
+            // Create confetti
+            createConfetti();
+            
+            // Show message
+            const messages = [
+                "🎁 Tu regalo es todo mi amor y gratitud por ser la mejor mamá del mundo. ¡Te amo! ❤️",
+                "💝 El mejor regalo es tenerte como mi mamá. ¡Feliz día!",
+                "🎀 Gracias por ser mi ángel, mi guía y mi mejor amiga. ¡Feliz día mamá!",
+                "🌸 Hoy celebramos a la mujer más especial de mi vida. ¡Te amo mamá!"
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            alert(randomMessage);
+        }
+        
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // Random properties
+                const size = Math.random() * 10 + 5;
+                const color = `hsl(${Math.random() * 60 + 330}, 100%, 70%)`;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 3;
+                const duration = Math.random() * 3 + 2;
+                
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                confetti.style.backgroundColor = color;
+                confetti.style.left = `${left}%`;
+                confetti.style.animationDelay = `${delay}s`;
+                confetti.style.animationDuration = `${duration}s`;
+                
+                container.appendChild(confetti);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, duration * 1000);
+            }
+        }
+        
+        function showMemory(number) {
+            const memoryTexts = [
+                "Recuerdo todas esas veces que preparabas mi comida favorita con tanto amor.",
+                "Nunca olvidaré cómo siempre estuviste ahí para mí, en las buenas y en las malas.",
+                "Tus consejos han sido mi brújula en la vida. Gracias por tu sabiduría.",
+                "Tu risa es el sonido más hermoso que conozco. ¡Me encanta verte feliz!"
+            ];
+            
+            alert(memoryTexts[number - 1]);
+        }
+        
+        function createMusicNotes() {
+            const container = document.getElementById('hearts-container');
+            
+            setInterval(() => {
+                const note = document.createElement('div');
+                note.className = 'music-note absolute';
+                
+                const left = Math.random() * 100;
+                const delay = Math.random() * 2;
+                const noteType = Math.random() > 0.5 ? 'fa-music' : 'fa-headphones';
+                const color = `hsl(${Math.random() * 30 + 330}, 100%, ${Math.random() * 30 + 60}%)`;
+                
+                note.style.left = `${left}%`;
+                note.style.animationDelay = `${delay}s`;
+                note.style.color = color;
+                note.innerHTML = `<i class="fas ${noteType}"></i>`;
+                
+                container.appendChild(note);
+                
+                setTimeout(() => {
+                    note.remove();
+                }, 5000);
+            }, 300);
+        }
+        
+        // Add floating animation to all hearts
+        document.querySelectorAll('.heart').forEach(heart => {
+            const delay = Math.random() * 2;
+            heart.style.animationDelay = `${delay}s`;
+        });
+        
+        // Add rose petals falling
+        setInterval(() => {
+            const petal = document.createElement('div');
+            petal.className = 'rose-petal absolute';
+            
+            const left = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 5 + 5;
+            
+            petal.style.left = `${left}%`;
+            petal.style.animationDelay = `${delay}s`;
+            petal.style.animationDuration = `${duration}s`;
+            
+            document.body.appendChild(petal);
+            
+            setTimeout(() => {
+                petal.remove();
+            }, duration * 1000);
+        }, 2000);
+    </script>
+</body>
+</html>
